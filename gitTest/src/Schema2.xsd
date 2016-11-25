@@ -1,0 +1,176 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<!--
+ edited with XMLSpy v2015 rel. 4 sp1 (http://www.altova.com) by Novartis Pharma AG (Novartis Pharma AG) 
+-->
+<!--
+ Changes in V1.0 
+Date: March 2015
+Author: Con O'Leary(Novartis)
+	<xs:import namespace="http://www.novartis.com/DI/D2P/Broker/Schemas/CommonTypes" schemaLocation="CommonTypes.xsd"/> V1.5 RIB interoperability
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.novartis.com/DI/DataHub/PPM/Schemas/CommonTypes" xmlns:com="http://www.novartis.com/DI/D2P/Broker/Schemas/CommonTypes" xmlns:ns1="http://www.novartis.com/DI/D2P/Broker/Schemas/CommonTypes" targetNamespace="http://www.novartis.com/DI/DataHub/PPM/Schemas/CommonTypes" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.8">
+<!--
+ <xs:import namespace="http://www.novartis.com/DI/D2P/Broker/Schemas/CommonTypes" schemaLocation="CommonTypes.xsd"/> 
+-->
+<xs:complexType name="ProjectType">
+<xs:annotation>
+<xs:documentation>
+A grouping of interconnected activities related to drug development with the aim of submitting a product registration / submission dossier with commercial intent. A development project in GenMeds is always linked to a compound and an indication. ------------------- Sandoz specific: Additional Development Projects (under the roof of the program) with a separate SPIRIT code can be approved but should only be established in exceptional cases. Instead of a having additional Development Projects, extending the scope of a global biosimilar program should be the preferred way forward (e.g. to ensure all activities are managed by the same IPT). Such additional Development Projects require approval by BPRB. One situation justifying the approval as additional Development Project might be that the original Development Project is already in the post-launch period and that additional and significant global development activities with a precisely defined scope are required. ----------- Technology Project IT Project Non-Drug Development Project Drug Development Project --------------
+</xs:documentation>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+<xs:element name="type" type="xs:string" minOccurs="1" maxOccurs="1"/>
+<xs:element name="singleTa" type="xs:string" minOccurs="1" maxOccurs="1">
+<xs:annotation>
+<xs:documentation>
+Categorization into slightly modified level-1 ATC codes: A - Alimentary and Metabolism, B Blood and Blood Forming Organs, and so on Sample Values: Blood and Blood Forming Organs; Cardiovascular & Vascular
+</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element name="ResearchProject" minOccurs="0" maxOccurs="1">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="modeOfAction" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="CompoundProject" minOccurs="0" maxOccurs="1">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="icmType" type="xs:string"/>
+<xs:element name="medicalNeed" type="xs:string"/>
+<xs:element name="modeOfAction" type="xs:string"/>
+<xs:element name="formulation" type="xs:string"/>
+<xs:element name="nmeLcmFlag" type="xs:string"/>
+<xs:sequence maxOccurs="unbounded">
+<xs:element name="region" type="xs:string"/>
+</xs:sequence>
+<xs:element name="routeOfAdministration" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="IndicationSubmissionProject" minOccurs="0" maxOccurs="1">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="icmType" type="xs:string"/>
+<xs:element name="medicalNeed" type="xs:string"/>
+<xs:element name="companyIndication" type="xs:string"/>
+<xs:element name="formulation" type="xs:string"/>
+<xs:element name="nmeLcmFlag" type="xs:string"/>
+<xs:sequence>
+<xs:element name="region" type="xs:string"/>
+</xs:sequence>
+<xs:element name="routeOfAdministration" type="xs:string"/>
+<xs:element name="therapeuticalArea" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="BiosimilarProject" minOccurs="0" maxOccurs="1">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="companyIndication" type="xs:string"/>
+<xs:element name="formulation" type="xs:string"/>
+<xs:element name="modeOfAction"/>
+<xs:element name="originatorCompany" type="xs:string"/>
+<xs:sequence maxOccurs="unbounded">
+<xs:element name="originatorIndication" type="xs:string"/>
+</xs:sequence>
+<xs:element name="owningBu" type="xs:string"/>
+<xs:element name="referenceProductBrandName" type="xs:string"/>
+<xs:sequence maxOccurs="unbounded">
+<xs:element name="region" type="xs:string"/>
+</xs:sequence>
+<xs:element name="routeOfAdministration" type="xs:string"/>
+<xs:element name="therapeuticalArea" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="DeviceCombinationProject" minOccurs="0" maxOccurs="1">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="icmType" type="xs:string"/>
+<xs:element name="medicalNeed" type="xs:string"/>
+<xs:element name="companyIndication" type="xs:string"/>
+<xs:element name="formulation" type="xs:string"/>
+<xs:element name="nmeLcmFlag" type="xs:string"/>
+<xs:sequence maxOccurs="unbounded">
+<xs:element name="region" type="xs:string"/>
+</xs:sequence>
+<xs:element name="routeOfAdministration" type="xs:string"/>
+<xs:element name="therapeuticalArea" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="DeviceDiagnosticProject" minOccurs="0" maxOccurs="1">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="nmeLcmFlag" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="NonDrugProject" minOccurs="0" maxOccurs="1">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="companyBrandName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="code" type="xs:string" minOccurs="1" maxOccurs="1"/>
+<xs:element name="description" type="xs:string" minOccurs="1" maxOccurs="1"/>
+<xs:element name="priority" type="xs:string" minOccurs="1" maxOccurs="1"/>
+<xs:element name="ranking" type="xs:string"/>
+<xs:element name="referenceProductBrandName" type="xs:string" minOccurs="1" maxOccurs="1"/>
+<xs:element name="staging" type="xs:string" minOccurs="1" maxOccurs="1"/>
+<xs:element name="status" type="xs:string" minOccurs="1" maxOccurs="1"/>
+<xs:element name="subunit" type="xs:integer" minOccurs="1" maxOccurs="1"/>
+<xs:element name="trdLineFunction" type="xs:string" minOccurs="1" maxOccurs="1"/>
+<xs:element name="lineOfBusiness" type="xs:string"/>
+<xs:element name="phase" type="xs:string"/>
+<xs:element name="costSharingPartner" type="xs:string"/>
+<xs:element name="finishDate" type="xs:date"/>
+<xs:element name="owner" type="xs:string"/>
+<xs:element name="owningGpt" type="xs:string"/>
+<xs:element name="version" type="xs:double"/>
+<xs:element name="projectId" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ProgramType">
+<xs:annotation>
+<xs:documentation>
+A compound specific grouping of all activities (including projects) related to a drug development project. which support the submission of product registration(s) / submission dossier(s) with commercial intent. ------------------------ Sandoz specific: A biosimilar program comprises all activities, irrespective of whether in development or marketed and performed on one Sandoz molecule to be biosimilar to a single originator International Non-Proprietary Name (INN). The starting point of a biosimilar program is the endorsement of the PCS the Biopharmaceuticals Project Review Board (BPRB)
+</xs:documentation>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="CompoundDevelopmentProgram" minOccurs="0" maxOccurs="1">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="genericName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+<xs:element name="inn" type="xs:string"/>
+<xs:element name="compoundCode" type="xs:string"/>
+<xs:element name="genericName" type="xs:string"/>
+<xs:element name="moleculeType" type="xs:string"/>
+<xs:element name="targetMechanismOfAction" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ResearchProgram" minOccurs="0" maxOccurs="1">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="target" type="xs:string" minOccurs="1" maxOccurs="1"/>
+<xs:element name="modalityNibr" type="xs:string"/>
+<xs:element name="targetMechanismOfAction" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="Project" type="ProjectType" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="description" type="xs:string"/>
+<xs:element name="name" type="xs:string"/>
+<xs:element name="origin" type="xs:string"/>
+<xs:element name="owner" type="xs:string"/>
+<xs:element name="status" type="xs:string"/>
+<xs:element name="type" type="xs:string"/>
+<xs:element name="programId" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
